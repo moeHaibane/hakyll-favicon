@@ -39,10 +39,10 @@ iosTemplate :: Compiler (Item String)
 iosTemplate = makeItem "<link rel=\"apple-touch-icon-precomposed\" sizes=\"$size$x$size$\" href=\"$src$\">"
 
 icoTemplate :: Compiler (Item String)
-icoTemplate = makeItem "<link rel=\"shortcut icon\" href=\"favicon.ico\" type=\"image/x-icon\">"
+icoTemplate = makeItem "<link rel=\"icon\" href=\"favicon.ico\" type=\"image/x-icon\">"
 
 basicTemplate :: Compiler (Item String)
-basicTemplate = makeItem "<link rel=\"shortcut icon\" href=\"$src$\">"
+basicTemplate = makeItem "<link rel=\"icon\" href=\"$src$\">"
 
 faviconsField :: Context String
 faviconsField = field "favicons" $ \_ -> do
@@ -67,7 +67,6 @@ faviconName (Favicon (Basic size)) = "favicon" ++ show size ++ ".png"
 
 faviconPath :: Favicon -> FilePath
 faviconPath favicon@(Favicon (Ico _)) = faviconName favicon
-faviconPath favicon = "images" </> "favicons" </> faviconName favicon
 faviconPath favicon = "images" </> "favicons" </> faviconName favicon
 
 faviconsRules :: Pattern -> Rules ()
